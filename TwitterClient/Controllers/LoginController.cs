@@ -25,7 +25,7 @@ namespace TwitterClient.Controllers
         #endregion
 
         /* Var */
-        private IConsumerCredentials appCredentrials = new TwitterCredentials("BYOymVcc9Yyk2mA67pLhWxS46", "YSsfV0VmFPEcQqjiZpEvZw28Ngdz4MzO6AEugef5sRzDNGkgmb");
+        private TwitterCredentials appCredentials = new TwitterCredentials("BYOymVcc9Yyk2mA67pLhWxS46", "YSsfV0VmFPEcQqjiZpEvZw28Ngdz4MzO6AEugef5sRzDNGkgmb");
         private IWindow window;
 
         /* Ctor */
@@ -46,6 +46,20 @@ namespace TwitterClient.Controllers
             }
         }
 
+        public TwitterCredentials AppCredentials
+        {
+            get
+            {
+                return appCredentials;
+            }
+
+            set
+            {
+                appCredentials = value;
+            }
+        }
+        
+        /* Event */
         private void Window_loginButtonClicked(object sender, EventArgs e)
         {
             Auth.SetCredentials(CredentialsCreator.GetCredentialsFromVerifierCode(Window.pin, AppCredentials));
@@ -55,18 +69,10 @@ namespace TwitterClient.Controllers
 
             Window.Close();
         }
-
-        public IConsumerCredentials AppCredentials { get; }
-
-        /* Event */
+        
         private void Window_pinButtonClicked(object sender, EventArgs e)
         {
             Process.Start(CredentialsCreator.GetAuthorizationURL(AppCredentials));
         }
-
-
-
-       
-
     }
 }
