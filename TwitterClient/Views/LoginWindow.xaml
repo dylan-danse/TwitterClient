@@ -1,0 +1,27 @@
+﻿<Window x:Class="TwitterClient.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TwitterClient"
+        mc:Ignorable="d"
+        Title="Login" Height="179.448" Width="351.193" ResizeMode="NoResize" Background="#FF9AE9FF">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="ButtonPin" Content="Connect with Twitter" Height="Auto" Click="ButtonPin_Click" Background="#FF36D8FF" Foreground="White" ToolTip="Get your PinCode" Grid.Column="1" Grid.Row="2"/>
+        <TextBox x:Name="TextBoxEncodePin" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Visibility="Hidden" FontSize="16" FontWeight="Bold" Foreground="#FF673AB7" />
+        <Button x:Name="ButtonLogin" Content="Login" Height="Auto" Click="ButtonLogin_Click" Grid.Row="3" Grid.Column="1" Visibility="Hidden"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="0" Width="0"/>
+    </Grid>
+</Window>
