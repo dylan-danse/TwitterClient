@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TwitterClient
 {
-    class Message
+    public class Message
     {
         private Person user;
         private string message;

@@ -30,7 +30,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <RichTextBox x:Name="RichTextBoxTweet"  Grid.Column="1" Grid.Row="1" BorderThickness="4,4,4,4" AcceptsTab="True" FontFamily="Microsoft Sans Serif" Block.LineHeight="8" TextChanged="RichTextBoxTweet_TextChanged" >
+        <RichTextBox x:Name="RichTextBoxTweet"  Grid.Column="1" Grid.Row="1" BorderThickness="4,4,4,4" AcceptsTab="True" FontFamily="Microsoft Sans Serif" Block.LineHeight="8">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Votre tweet ..."/>

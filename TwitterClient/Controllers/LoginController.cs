@@ -48,15 +48,8 @@ namespace TwitterClient.Controllers
 
         public TwitterCredentials AppCredentials
         {
-            get
-            {
-                return appCredentials;
-            }
-
-            set
-            {
-                appCredentials = value;
-            }
+            get { return appCredentials; }
+            set { appCredentials = value; }
         }
         
         /* Event */

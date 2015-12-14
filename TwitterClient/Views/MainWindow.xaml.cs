@@ -15,75 +15,56 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tweetinvi;
 using Tweetinvi.Core.Interfaces;
+using TwitterClient.Controllers;
 
 namespace TwitterClient
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, MainController.IWindow
     {
-        private ObservableCollection<Message> homeTimeline { get; set; }
+        public event EventHandler publishTweetButtonClicked;
 
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            homeTimeline = getFormatedTimeline();
-            DataContext = homeTimeline;
+        public ObservableCollection<Message> HomeTimeline
+        {
+            set { listViewTimeLine.DataContext = value; }
+        }
+
+        public string TweetToPublish
+        {
+            get
+            {
+                return new TextRange(RichTextBoxTweet.Document.ContentStart, RichTextBoxTweet.Document.ContentEnd).Text;
+            }
         }
 
         private void ButtonTweet_Click(object sender, RoutedEventArgs e)
         {
-            if (GetTextFromRichTextBox(RichTextBoxTweet).Length <= 140)
+            CallHandler(publishTweetButtonClicked, EventArgs.Empty);
+        }
+
+        public void CallHandler(EventHandler handler, EventArgs args)
+        {
+            if (handler != null)
             {
-                try
-                {
-                    var tweetPublished = Tweet.PublishTweet(GetTextFromRichTextBox(RichTextBoxTweet));
-                    MessageBox.Show("Tweet envoyé avec succès !", "OK");
-                    RichTextBoxTweet.Document.Blocks.Clear();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Votre tweet ne peut pas être vide !", "Erreur");
-                }
-            }
-            else if (GetTextFromRichTextBox(RichTextBoxTweet).Length > 140)
-            {
-                MessageBox.Show("Votre tweet ne peut pas dépasser 140 caractères !", "Erreur");
-            }
-            else
-            {
-                MessageBox.Show("Erreur lors de la publication ...", "Erreur");
+                handler(this, args);
             }
         }
 
-        private ObservableCollection<Message> getFormatedTimeline()
+        public void ShowError(string message)
         {
-            var tweets = Timeline.GetHomeTimeline();
-            ObservableCollection<Message> liste = new ObservableCollection<Message>();
-
-            foreach (var item in tweets)
-            {
-                liste.Add(new Message(new Person(item.CreatedBy.Name,
-                                                 item.CreatedBy.ScreenName,
-                                                 item.CreatedBy.ProfileImageUrl400x400) 
-                                     ,item.Text));
-            }
-
-            return liste;
+            MessageBox.Show(message,"Erreur",MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        public static string GetTextFromRichTextBox(RichTextBox rtb)
+        public void ShowMessage(string message)
         {
-            TextRange textRange = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
-            string text = textRange.Text;
-            return text;
-        }
-        
-        private void RichTextBoxTweet_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            RichTextBoxTweet.Document.Blocks.Clear();
+            MessageBox.Show(message,"Succès",MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
