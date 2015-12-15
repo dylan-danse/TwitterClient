@@ -63,5 +63,25 @@ namespace TwitterClient
                 handler(this, args);
             }
         }
+
+        public void BackToGetPin()
+        {
+            var bc = new BrushConverter();
+            this.Background = (Brush)bc.ConvertFrom("#FF9AE9FF");
+
+            ButtonPin.Visibility = Visibility.Visible;
+            ButtonLogin.Visibility = Visibility.Hidden;
+            TextBoxEncodePin.Visibility = Visibility.Hidden;
+        }
+
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message, "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

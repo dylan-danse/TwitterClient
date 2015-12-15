@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using Tweetinvi;
 using Tweetinvi.Core.Credentials;
 
@@ -21,6 +22,9 @@ namespace TwitterClient.Controllers
 
             void Show();
             void Close();
+            void ShowMessage(string message);
+            void ShowError(string message);
+            void BackToGetPin();
         }
         #endregion
 
@@ -45,7 +49,7 @@ namespace TwitterClient.Controllers
                 window.loginButtonClicked += Window_loginButtonClicked;
             }
         }
-
+        
         public TwitterCredentials AppCredentials
         {
             get { return appCredentials; }
@@ -55,14 +59,23 @@ namespace TwitterClient.Controllers
         /* Event */
         private void Window_loginButtonClicked(object sender, EventArgs e)
         {
-            Auth.SetCredentials(CredentialsCreator.GetCredentialsFromVerifierCode(Window.pin, AppCredentials));
-
-            MainController mainController = new MainController { Window = new MainWindow() };
-            mainController.HandleNavigation(null);
-
-            Window.Close();
+            ITwitterCredentials cred = CredentialsCreator.GetCredentialsFromVerifierCode(Window.pin, AppCredentials);
+            if (cred != null)
+            {
+                Auth.SetCredentials(cred);
+                MainController mainController = new MainController { Window = new MainWindow() };
+                mainController.HandleNavigation(null);
+                Window.Close();
+            }
+            else
+            {
+                Window.ShowError("Pin incorrect !");
+                AppCredentials.AuthorizationKey = null;
+                AppCredentials.AuthorizationSecret = null;
+                Window.BackToGetPin();
+            }
         }
-        
+
         private void Window_pinButtonClicked(object sender, EventArgs e)
         {
             Process.Start(CredentialsCreator.GetAuthorizationURL(AppCredentials));
