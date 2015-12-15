@@ -32,7 +32,7 @@ namespace TwitterClient
             InitializeComponent();
         }
 
-        public ObservableCollection<Message> HomeTimeline
+        public ObservableCollection<ITweet> HomeTimeline
         {
             set { TimelineListBox.DataContext = value; }
         }

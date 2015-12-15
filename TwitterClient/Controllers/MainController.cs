@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tweetinvi;
+using Tweetinvi.Core.Interfaces;
 
 namespace TwitterClient.Controllers
 {
@@ -17,7 +18,7 @@ namespace TwitterClient.Controllers
             event EventHandler publishTweetButtonClicked;
             event EventHandler disconnectClicked;
 
-            ObservableCollection<Message> HomeTimeline { set; }
+            ObservableCollection<ITweet> HomeTimeline { set; }
             string TweetToPublish { get; }
 
             string Username { set; }
@@ -36,7 +37,7 @@ namespace TwitterClient.Controllers
         /* Ctor */
         public override void HandleNavigation(object args)
         {
-            Window.HomeTimeline = getFormatedTimeline();
+            Window.HomeTimeline = getTimeline();
             Window.Show();
 
             Window.Username = User.GetLoggedUser().Name;
@@ -85,18 +86,16 @@ namespace TwitterClient.Controllers
         }
 
         /* Methods */
-        private ObservableCollection<Message> getFormatedTimeline()
+        private ObservableCollection<ITweet> getTimeline()
         {
             var tweets = Timeline.GetHomeTimeline();
-            ObservableCollection<Message> liste = new ObservableCollection<Message>();
+            ObservableCollection<ITweet> liste = new ObservableCollection<ITweet>();
 
             foreach (var item in tweets)
             {
-                liste.Add(new Message(new Person(item.CreatedBy.Name,
-                                                 item.CreatedBy.ScreenName,
-                                                 item.CreatedBy.ProfileImageUrl400x400)
-                                     , item.Text));
+                liste.Add(item);
             }
+
             return liste;
         }
     }

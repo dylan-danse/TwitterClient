@@ -44,12 +44,15 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="55"/>
-                            <ColumnDefinition Width="452*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="300*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="{Binding User.Name}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
-                        <Image  Grid.RowSpan="2" Source="{Binding User.ProfilePictureURL}" />
-                        <Label Grid.Column="1" Grid.Row="1" Content="{Binding Tweet}"/>
+
+                        <Label Content="{Binding CreatedBy.Name}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
+                        <Label Content="{Binding CreatedBy.ScreenName}" Grid.Column="2" FontSize="12" />
+                        <Image Grid.RowSpan="2" Source="{Binding CreatedBy.ProfileImageUrl}" />
+                        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding Text}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
