@@ -50,7 +50,7 @@
 
                         <Label Content="{Binding CreatedBy.Name}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
                         <Label Content="{Binding CreatedBy.ScreenName}" Grid.Column="2" FontSize="12" />
-                        <Image Grid.RowSpan="2" Source="{Binding CreatedBy.ProfileImageUrl}" />
+                        <Image Grid.RowSpan="2" Source="{Binding CreatedBy.ProfileImageUrl400x400}" />
                         <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding Text}"/>
                     </Grid>
                 </DataTemplate>
