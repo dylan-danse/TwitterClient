@@ -46,7 +46,7 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="55*"/>
+                            <ColumnDefinition Width="55"/>
                             <ColumnDefinition Width="452*"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="{Binding User.Name}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
