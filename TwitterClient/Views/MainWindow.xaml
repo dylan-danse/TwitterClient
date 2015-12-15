@@ -19,14 +19,15 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="620*"/>
+            <ColumnDefinition Width="631*"/>
             <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="194*"/>
-            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="22*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF36D8FF" Foreground="White" Grid.Column="3" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode"/>
-        <ListView x:Name="listViewTimeLine" ItemsSource="{Binding}" BorderThickness="4" BorderBrush="Gray" Background="White" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3" FontFamily="Arial" FontSize="13.333">
+        <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF36D8FF" Foreground="White" Grid.Column="3" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.ColumnSpan="2"/>
+        <ListView x:Name="listViewTimeLine" ItemsSource="{Binding}" BorderThickness="4" BorderBrush="Gray" Background="White" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" FontFamily="Arial" FontSize="13.333">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -40,7 +41,8 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Label x:Name="UsernameLabel" Grid.Column="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="UsernameLabel" Grid.Column="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <Label x:Name="DisconnectLabel" Content="Disconnect" Grid.Column="4" Background="#00000000" Foreground="#FF36D8FF" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MouseDown="DisconnectLabel_MouseDown"/>
 
     </Grid>
 </Window>

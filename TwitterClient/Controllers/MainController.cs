@@ -14,12 +14,13 @@ namespace TwitterClient.Controllers
         #region interface
         public interface IWindow
         {
+            event EventHandler publishTweetButtonClicked;
+            event EventHandler disconnectClicked;
+
             ObservableCollection<Message> HomeTimeline { set; }
             string TweetToPublish { get; }
 
             string Username { set; }
-
-            event EventHandler publishTweetButtonClicked;
 
             void CleanTweetBox();
             void Show();
@@ -49,10 +50,19 @@ namespace TwitterClient.Controllers
             {
                 window = value;
                 window.publishTweetButtonClicked += Window_publishTweetButtonClicked;
+                Window.disconnectClicked += Window_disconnectClicked;
             }
         }
 
-        /* Event */ 
+        private void Window_disconnectClicked(object sender, EventArgs e)
+        {
+            LoginController loginController = new LoginController { Window = new LoginWindow() };
+            loginController.HandleNavigation(null);
+
+            Window.Close();
+        }
+
+        /* Event */
         private void Window_publishTweetButtonClicked(object sender, EventArgs e)
         {
             try

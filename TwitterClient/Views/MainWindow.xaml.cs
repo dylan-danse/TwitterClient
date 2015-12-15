@@ -25,6 +25,7 @@ namespace TwitterClient
     public partial class MainWindow : Window, MainController.IWindow
     {
         public event EventHandler publishTweetButtonClicked;
+        public event EventHandler disconnectClicked;
 
         public MainWindow()
         {
@@ -78,6 +79,11 @@ namespace TwitterClient
         public void CleanTweetBox()
         {
             RichTextBoxTweet.Document.Blocks.Clear();
+        }
+
+        private void DisconnectLabel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            CallHandler(disconnectClicked, EventArgs.Empty);
         }
     }
 }
