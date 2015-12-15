@@ -8,9 +8,9 @@
         Title="Twitter Client" Height="485.368" Width="904.118">
     <Grid Background="#FFC1EAF3">
         <Grid.RowDefinitions>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="64*"/>
-            <RowDefinition Height="34*"/>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="34"/>
             <RowDefinition Height="290*"/>
             <RowDefinition Height="24*"/>
         </Grid.RowDefinitions>
