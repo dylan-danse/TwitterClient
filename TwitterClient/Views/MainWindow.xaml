@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="#F2EEE8"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Twitter Client" Height="772" Width="1284">
+        Title="Twitter Client" Height="800" Width="1280" MinHeight="800" MinWidth="1280">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
