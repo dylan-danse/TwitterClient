@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF5EA9DD" Foreground="White" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.Column="2" Margin="10"/>
-        <RichTextBox x:Name="RichTextBoxTweet" BorderThickness="0,0,0,4" AcceptsTab="True" Block.LineHeight="8" Grid.Row="1" Grid.Column="1" Margin="10">
+        <RichTextBox x:Name="RichTextBoxTweet" BorderThickness="0,0,0,4" AcceptsTab="True" Block.LineHeight="8" Grid.Row="1" Grid.Column="1" Margin="10" BorderBrush="White">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Votre tweet ..."/>
