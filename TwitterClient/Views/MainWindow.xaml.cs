@@ -44,6 +44,14 @@ namespace TwitterClient
             }
         }
 
+        public string Username
+        {
+            set
+            {
+                UsernameLabel.Content = value;
+            }
+        }
+
         private void ButtonTweet_Click(object sender, RoutedEventArgs e)
         {
             CallHandler(publishTweetButtonClicked, EventArgs.Empty);

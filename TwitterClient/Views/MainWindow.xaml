@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterClient"
         mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Twitter Client" Height="485.368" Width="904.118">
     <Grid Background="#FFC1EAF3">
         <Grid.RowDefinitions>
@@ -30,13 +33,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <RichTextBox x:Name="RichTextBoxTweet"  Grid.Column="1" Grid.Row="1" BorderThickness="4,4,4,4" AcceptsTab="True" FontFamily="Microsoft Sans Serif" Block.LineHeight="8">
+        <RichTextBox x:Name="RichTextBoxTweet"  Grid.Column="1" Grid.Row="1" BorderThickness="4,4,4,4" AcceptsTab="True" Block.LineHeight="8">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Votre tweet ..."/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
+        <Label x:Name="UsernameLabel" Grid.Column="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>

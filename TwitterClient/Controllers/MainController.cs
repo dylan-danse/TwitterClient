@@ -17,6 +17,8 @@ namespace TwitterClient.Controllers
             ObservableCollection<Message> HomeTimeline { set; }
             string TweetToPublish { get; }
 
+            string Username { set; }
+
             event EventHandler publishTweetButtonClicked;
 
             void CleanTweetBox();
@@ -35,6 +37,8 @@ namespace TwitterClient.Controllers
         {
             Window.HomeTimeline = getFormatedTimeline();
             Window.Show();
+
+            Window.Username = User.GetLoggedUser().Name;
         }
 
         /* Prop */ 
