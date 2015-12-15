@@ -33,7 +33,7 @@
 
         <Rectangle Fill="White" Grid.ColumnSpan="3"/>
         <Label x:Name="DisconnectLabel" Content="Disconnect" Background="#00000000" Foreground="#FF36D8FF" Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MouseDown="DisconnectLabel_MouseDown" Margin="292,0,0,0"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="45" Width="45" Margin="287,0,0,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/Twitter_logo_blue.png" RenderTransformOrigin="0.233,0.267" Grid.Column="1"/>
+        <Image x:Name="image" Source="pack://siteoforigin:,,,/Resources/Twitter_logo_blue.png" RenderTransformOrigin="0.233,0.267" Grid.ColumnSpan="3" Margin="0,5"/>
 
         <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Background="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1" Margin="10">
             <ListBox.ItemTemplate>
@@ -65,7 +65,11 @@
                 <RowDefinition Height="55"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="ProfileUrlImage" Source="{Binding}" HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="110" Margin="65,0,0,0"/>
+            <Image x:Name="ProfileUrlImage" Source="{Binding}" >
+                <Image.Clip>
+                    <RectangleGeometry RadiusX="60" RadiusY="60" Rect="0,0,110,110"/>
+                </Image.Clip>
+            </Image>
             <Label x:Name="UsernameLabel" VerticalContentAlignment="Center" Grid.Row="1" Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="18.667" FontWeight="Bold" HorizontalContentAlignment="Center" />
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
