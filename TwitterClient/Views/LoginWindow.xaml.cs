@@ -41,10 +41,6 @@ namespace TwitterClient
         {
             CallHandler(pinButtonClicked,EventArgs.Empty);
 
-            //Change Background Color
-            var bc = new BrushConverter();
-            this.Background = (Brush)bc.ConvertFrom("#FFCEBEF9");
-
             //Hide First Button and enable Connection field
             ButtonPin.Visibility = Visibility.Hidden;
             ButtonLogin.Visibility = Visibility.Visible;
@@ -66,9 +62,6 @@ namespace TwitterClient
 
         public void BackToGetPin()
         {
-            var bc = new BrushConverter();
-            this.Background = (Brush)bc.ConvertFrom("#FF9AE9FF");
-
             ButtonPin.Visibility = Visibility.Visible;
             ButtonLogin.Visibility = Visibility.Hidden;
             TextBoxEncodePin.Visibility = Visibility.Hidden;
