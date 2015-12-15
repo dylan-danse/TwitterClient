@@ -9,17 +9,43 @@ namespace TwitterClient
     public class Message
     {
         private Person user;
-        private string message;
+        private string tweet;
 
-        public Message(Person user, string message)
+        public Person User
         {
-            this.user = user;
-            this.message = message;
+            get
+            {
+                return user;
+            }
+
+            set
+            {
+                user = value;
+            }
+        }
+
+        public string Tweet
+        {
+            get
+            {
+                return tweet;
+            }
+
+            set
+            {
+                tweet = value;
+            }
+        }
+
+        public Message(Person user, string tweet)
+        {
+            this.User = user;
+            this.Tweet = tweet;
         }
 
         public override string ToString()
         {
-            return string.Concat(user.ToString()," :\n\t",message);
+            return string.Concat(User.ToString()," :\n\t", Tweet);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace TwitterClient
 
         public ObservableCollection<Message> HomeTimeline
         {
-            set { listViewTimeLine.DataContext = value; }
+            set { TimelineListBox.DataContext = value; }
         }
 
         public string TweetToPublish

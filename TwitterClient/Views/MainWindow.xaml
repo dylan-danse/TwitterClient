@@ -27,13 +27,6 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF36D8FF" Foreground="White" Grid.Column="3" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.ColumnSpan="2"/>
-        <ListView x:Name="listViewTimeLine" ItemsSource="{Binding}" BorderThickness="4" BorderBrush="Gray" Background="White" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" FontFamily="Arial" FontSize="13.333">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <RichTextBox x:Name="RichTextBoxTweet"  Grid.Column="1" Grid.Row="1" BorderThickness="4,4,4,4" AcceptsTab="True" Block.LineHeight="8">
             <FlowDocument>
                 <Paragraph>
@@ -43,6 +36,26 @@
         </RichTextBox>
         <Label x:Name="UsernameLabel" Grid.Column="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Label x:Name="DisconnectLabel" Content="Disconnect" Grid.Column="4" Background="#00000000" Foreground="#FF36D8FF" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MouseDown="DisconnectLabel_MouseDown"/>
+
+        <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55*"/>
+                            <ColumnDefinition Width="452*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding User.Name}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
+                        <Image  Grid.RowSpan="2" Source="{Binding User.ProfilePictureURL}" />
+                        <Label Grid.Column="1" Grid.Row="1" Content="{Binding Tweet}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Window>
