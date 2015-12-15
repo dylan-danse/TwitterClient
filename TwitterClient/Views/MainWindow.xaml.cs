@@ -53,6 +53,14 @@ namespace TwitterClient
             }
         }
 
+        public string ProfileImageUrl
+        {
+            set
+            {
+                ProfileUrlImage.DataContext = value;
+            }
+        }
+
         private void ButtonTweet_Click(object sender, RoutedEventArgs e)
         {
             CallHandler(publishTweetButtonClicked, EventArgs.Empty);

@@ -12,16 +12,18 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="539*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="489*"/>
             <RowDefinition Height="57*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1095*"/>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="360"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF36D8FF" Foreground="White" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.Column="1" Margin="10"/>
-        <RichTextBox x:Name="RichTextBoxTweet" BorderThickness="4,4,4,4" AcceptsTab="True" Block.LineHeight="8" Grid.Row="1" Margin="10">
+        <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF36D8FF" Foreground="White" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.Column="2" Margin="10"/>
+        <RichTextBox x:Name="RichTextBoxTweet" BorderThickness="4,4,4,4" AcceptsTab="True" Block.LineHeight="8" Grid.Row="1" Grid.Column="1" Margin="10">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Votre tweet ..."/>
@@ -29,12 +31,11 @@
             </FlowDocument>
         </RichTextBox>
 
-        <Rectangle Fill="White" Grid.ColumnSpan="2"/>
-        <Label x:Name="UsernameLabel" VerticalContentAlignment="Center" Margin="10,0,726,0" />
-        <Label x:Name="DisconnectLabel" Content="Disconnect" Background="#00000000" Foreground="#FF36D8FF" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MouseDown="DisconnectLabel_MouseDown" Margin="292,0,0,0"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="45" Width="45" Margin="482,0,0,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/Twitter_logo_blue.png" RenderTransformOrigin="0.233,0.267"/>
+        <Rectangle Fill="White" Grid.ColumnSpan="3"/>
+        <Label x:Name="DisconnectLabel" Content="Disconnect" Background="#00000000" Foreground="#FF36D8FF" Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MouseDown="DisconnectLabel_MouseDown" Margin="292,0,0,0"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="45" Width="45" Margin="287,0,0,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/Twitter_logo_blue.png" RenderTransformOrigin="0.233,0.267" Grid.Column="1"/>
 
-        <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Background="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10">
+        <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Background="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1" Margin="10">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid >
@@ -56,6 +57,34 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Grid Background="#F880A8CC" Grid.Row="1" Grid.RowSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image x:Name="ProfileUrlImage" Source="{Binding}" HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="110" Margin="65,0,0,0"/>
+            <Label x:Name="UsernameLabel" VerticalContentAlignment="Center" Grid.Row="1" Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="18.667" FontWeight="Bold" HorizontalContentAlignment="Center" />
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Tweets" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="Following" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="Follower" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="120" Grid.Row="1" RenderTransformOrigin="0.395,-0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="142" RenderTransformOrigin="0.395,-0.5" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="1451" RenderTransformOrigin="0.395,-0.5" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+            </Grid>
+        </Grid>
 
 
 

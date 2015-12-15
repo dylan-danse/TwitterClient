@@ -22,6 +22,7 @@ namespace TwitterClient.Controllers
             string TweetToPublish { get; }
 
             string Username { set; }
+            string ProfileImageUrl { set; }
 
             void CleanTweetBox();
             void Show();
@@ -38,9 +39,12 @@ namespace TwitterClient.Controllers
         public override void HandleNavigation(object args)
         {
             Window.HomeTimeline = getTimeline();
-            Window.Show();
+           
 
             Window.Username = User.GetLoggedUser().Name;
+            Window.ProfileImageUrl = User.GetLoggedUser().ProfileImageUrl400x400;
+
+            Window.Show();
         }
 
         /* Prop */ 
