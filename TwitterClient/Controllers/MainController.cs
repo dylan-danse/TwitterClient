@@ -18,7 +18,8 @@ namespace TwitterClient.Controllers
             string TweetToPublish { get; }
 
             event EventHandler publishTweetButtonClicked;
-            
+
+            void CleanTweetBox();
             void Show();
             void Close();
             void ShowError(string message);
@@ -58,8 +59,9 @@ namespace TwitterClient.Controllers
                 }
                 else
                 {
-                    Tweet.PublishTweet(window.TweetToPublish);
+                    Tweet.PublishTweet(window.TweetToPublish.Trim());
                     window.ShowMessage("Votre tweet a été publié avec succès");
+                    Window.CleanTweetBox();
                 }
             }
             catch (Exception)

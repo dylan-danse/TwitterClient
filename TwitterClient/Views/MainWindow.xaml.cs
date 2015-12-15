@@ -66,5 +66,10 @@ namespace TwitterClient
         {
             MessageBox.Show(message,"Succès",MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        public void CleanTweetBox()
+        {
+            RichTextBoxTweet.Document.Blocks.Clear();
+        }
     }
 }
