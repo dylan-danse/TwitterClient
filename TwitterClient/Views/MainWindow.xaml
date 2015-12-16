@@ -85,8 +85,8 @@
                 <Label Content="Following" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
                 <Label Content="Follower" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
                 <Label Content="{Binding Tweets}" Grid.Row="1" RenderTransformOrigin="0.395,-0.5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
-                <Label Content="{Binding Following}" RenderTransformOrigin="0.395,-0.5" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
-                <Label Content="{Binding Follower}" RenderTransformOrigin="0.395,-0.5" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="{Binding Followings}" RenderTransformOrigin="0.395,-0.5" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+                <Label Content="{Binding Followers}" RenderTransformOrigin="0.395,-0.5" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
             </Grid>
         </Grid>
 

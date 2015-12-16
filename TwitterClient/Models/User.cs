@@ -12,7 +12,7 @@ namespace TwitterClient.Models
         public string ProfileImageUrl { get; set; }
 
         public int Tweets { get; set; }
-        public int Following { get; set; }
-        public int Follower { get; set; }
+        public int Followings { get; set; }
+        public int Followers { get; set; }
     }
 }

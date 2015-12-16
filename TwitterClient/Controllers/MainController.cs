@@ -45,9 +45,9 @@ namespace TwitterClient.Controllers
             {
                 Username = LoggedUser.Name,
                 ProfileImageUrl = LoggedUser.ProfileImageUrl400x400,
-                Tweets = LoggedUser.Timeline.Count,
-                Follower = LoggedUser.Followers.Count,
-                Following = LoggedUser.Friends.Count
+                Tweets = 123,
+                Followers = 454,
+                Followings = 551
             };
 
 
