@@ -50,8 +50,9 @@ namespace TwitterClient.Controllers
                 Followings = LoggedUser.FriendsCount,
 
                 City = LoggedUser.Location,
-                AccountCreatedAt = "Inscrit en " + String.Format("{MMMM  yy}", LoggedUser.CreatedAt),
-        };
+                AccountCreatedAt = "Inscrit en " + String.Format("{0:MMMM  yyyy}", LoggedUser.CreatedAt),
+                Birthday = "Néé le " + String.Format("{0:dd MMMM yyyy}", LoggedUser.CreatedAt),
+            };
 
 
             Window.Show();

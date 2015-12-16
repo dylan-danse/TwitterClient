@@ -93,7 +93,7 @@
             </Grid>
             <Label Content="{Binding City}" Grid.Row="3" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
             <Label Content="{Binding AccountCreatedAt}" Grid.Row="4" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
-            <Label Content="Label" Grid.Row="5" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+            <Label Content="{Binding Birthday}" Grid.Row="5" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
         </Grid>
 
 
