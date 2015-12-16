@@ -17,6 +17,5 @@ namespace TwitterClient.Models
 
         public string  City { get; set; }
         public string AccountCreatedAt { get; set; }
-        public string Birthday { get; set; }
     }
 }

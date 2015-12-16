@@ -32,8 +32,8 @@
         </RichTextBox>
 
         <Rectangle Fill="White" Grid.ColumnSpan="3"/>
-        <Label x:Name="DisconnectLabel" Content="Disconnect" Background="#00000000" Foreground="#FF5EA9DD" Grid.Column="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MouseDown="DisconnectLabel_MouseDown" Margin="274,0,10,0"/>
-        <Image x:Name="image" Source="pack://siteoforigin:,,,/Resources/Twitter_logo_blue.png" RenderTransformOrigin="0.233,0.267" Grid.ColumnSpan="3" Margin="0,5"/>
+        <Image x:Name="image" Source="pack://siteoforigin:,,,/Resources/logo.png" RenderTransformOrigin="0.233,0.267" Grid.ColumnSpan="3" Margin="0,5"/>
+        <Image x:Name="image1" Grid.Column="2" HorizontalAlignment="Left" Margin="313,5,0,5" Width="37" Source="pack://siteoforigin:,,,/Resources/shutdown.png" MouseDown="DisconnectLabel_MouseDown"/>
 
         <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Background="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="5" Grid.Column="1" Margin="10">
             <ListBox.ItemTemplate>
@@ -91,8 +91,8 @@
                 <Label Content="{Binding Followings}" RenderTransformOrigin="0.395,-0.5" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF" FontWeight="Bold"/>
                 <Label Content="{Binding Followers}" RenderTransformOrigin="0.395,-0.5" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF" FontWeight="Bold"/>
             </Grid>
-            <Label Content="{Binding City}" Grid.Row="3" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
-            <Label Content="{Binding AccountCreatedAt}" Grid.Row="4" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
+            <Label Content="{Binding City}" Grid.Row="3" VerticalContentAlignment="Center" Foreground="#DDFFFFFF" Margin="35,0,0,0"/>
+            <Label Content="{Binding AccountCreatedAt}" Grid.Row="4" VerticalContentAlignment="Center" Foreground="#DDFFFFFF" Margin="35,0,0,0"/>
             <Label Content="{Binding Birthday}" Grid.Row="5" VerticalContentAlignment="Center" Foreground="#DDFFFFFF"/>
         </Grid>
 
