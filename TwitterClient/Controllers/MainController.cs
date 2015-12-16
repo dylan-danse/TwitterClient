@@ -47,8 +47,11 @@ namespace TwitterClient.Controllers
                 ProfileImageUrl = LoggedUser.ProfileImageUrl400x400,
                 Tweets = LoggedUser.StatusesCount,
                 Followers = LoggedUser.FollowersCount,
-                Followings = LoggedUser.FriendsCount
-            };
+                Followings = LoggedUser.FriendsCount,
+
+                City = LoggedUser.Location,
+                AccountCreatedAt = "Inscrit en " + String.Format("{MMMM  yy}", LoggedUser.CreatedAt),
+        };
 
 
             Window.Show();
