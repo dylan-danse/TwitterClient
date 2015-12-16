@@ -22,6 +22,12 @@
             <ColumnDefinition Width="360"/>
         </Grid.ColumnDefinitions>
 
+        <!-- StatusBar -->
+        <Rectangle x:Name="StatusBar" Fill="White" Grid.ColumnSpan="3"/>
+        <Image x:Name="LogoImage" Source="pack://siteoforigin:,,,/Resources/logo.png" RenderTransformOrigin="0.233,0.267" Grid.ColumnSpan="3" Margin="0,5"/>
+        <Image x:Name="Shutdown" Grid.Column="2" HorizontalAlignment="Left" Margin="313,5,0,5" Width="37" Source="pack://siteoforigin:,,,/Resources/shutdown.png" MouseDown="DisconnectLabel_MouseDown"/>
+
+        <!-- TweetBox -->
         <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF5EA9DD" Foreground="White" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.Column="2" Margin="10"/>
         <RichTextBox x:Name="RichTextBoxTweet" BorderThickness="0,0,0,4" AcceptsTab="True" Block.LineHeight="8" Grid.Row="1" Grid.Column="1" Margin="10" BorderBrush="White">
             <FlowDocument>
@@ -31,10 +37,7 @@
             </FlowDocument>
         </RichTextBox>
 
-        <Rectangle x:Name="StatusBar" Fill="White" Grid.ColumnSpan="3"/>
-        <Image x:Name="LogoImage" Source="pack://siteoforigin:,,,/Resources/logo.png" RenderTransformOrigin="0.233,0.267" Grid.ColumnSpan="3" Margin="0,5"/>
-        <Image x:Name="Shutdown" Grid.Column="2" HorizontalAlignment="Left" Margin="313,5,0,5" Width="37" Source="pack://siteoforigin:,,,/Resources/shutdown.png" MouseDown="DisconnectLabel_MouseDown"/>
-
+        <!-- TimeLine -->
         <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Background="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="5" Grid.Column="1" Margin="10">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -58,6 +61,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <!-- UserBox -->
         <Grid x:Name="UserPanel" Background="#FF5EA9DD" Grid.Row="1" Grid.RowSpan="6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="130"/>
@@ -95,8 +99,6 @@
             <Image x:Name="image" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Top" Width="25" Source="pack://siteoforigin:,,,/Resources/location.png" Margin="5,0,0,0" OpacityMask="#FF5EA9DD"/>
             <Image x:Name="image1" HorizontalAlignment="Left" Height="25" Grid.Row="4" VerticalAlignment="Top" Width="25" Source="pack://siteoforigin:,,,/Resources/calendar.png" Margin="5,0,0,0"/>
         </Grid>
-
-
 
     </Grid>
 </Window>
