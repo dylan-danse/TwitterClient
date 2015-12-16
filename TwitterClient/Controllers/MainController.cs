@@ -39,13 +39,15 @@ namespace TwitterClient.Controllers
         {
             Window.HomeTimeline = getTimeline();
 
+            var LoggedUser = User.GetLoggedUser();
+
             Window.User = new Models.User
             {
-                Username = User.GetLoggedUser().Name,
-                ProfileImageUrl = User.GetLoggedUser().ProfileImageUrl400x400,
-                Tweets = 102,
-                Follower = 125,
-                Following = 155
+                Username = LoggedUser.Name,
+                ProfileImageUrl = LoggedUser.ProfileImageUrl400x400,
+                Tweets = LoggedUser.Timeline.Count,
+                Follower = LoggedUser.Followers.Count,
+                Following = LoggedUser.Friends.Count
             };
 
 
