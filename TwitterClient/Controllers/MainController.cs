@@ -51,7 +51,6 @@ namespace TwitterClient.Controllers
 
                 City = LoggedUser.Location,
                 AccountCreatedAt = "Inscrit en " + String.Format("{0:MMMM  yyyy}", LoggedUser.CreatedAt),
-                Birthday = "Néé le " + String.Format("{0:dd MMMM yyyy}", LoggedUser.CreatedAt),
             };
 
 
