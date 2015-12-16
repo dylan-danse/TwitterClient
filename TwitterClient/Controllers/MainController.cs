@@ -21,8 +21,7 @@ namespace TwitterClient.Controllers
             ObservableCollection<ITweet> HomeTimeline { set; }
             string TweetToPublish { get; }
 
-            string Username { set; }
-            string ProfileImageUrl { set; }
+            Models.User User { set; }
 
             void CleanTweetBox();
             void Show();
@@ -39,10 +38,16 @@ namespace TwitterClient.Controllers
         public override void HandleNavigation(object args)
         {
             Window.HomeTimeline = getTimeline();
-           
 
-            Window.Username = User.GetLoggedUser().Name;
-            Window.ProfileImageUrl = User.GetLoggedUser().ProfileImageUrl400x400;
+            Window.User = new Models.User
+            {
+                Username = User.GetLoggedUser().Name,
+                ProfileImageUrl = User.GetLoggedUser().ProfileImageUrl400x400,
+                Tweets = 102,
+                Follower = 125,
+                Following = 155
+            };
+
 
             Window.Show();
         }

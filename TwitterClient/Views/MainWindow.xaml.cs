@@ -45,19 +45,11 @@ namespace TwitterClient
             }
         }
 
-        public string Username
+        public Models.User User
         {
             set
             {
-                UsernameLabel.Content = value;
-            }
-        }
-
-        public string ProfileImageUrl
-        {
-            set
-            {
-                ProfileUrlImage.DataContext = value;
+                UserPanel.DataContext = value;
             }
         }
 
