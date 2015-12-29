@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Tweetinvi;
 using Tweetinvi.Core.Interfaces;
+using TwitterClient.Models;
+using TwitterClient.Views;
 
 namespace TwitterClient.Controllers
 {
@@ -17,8 +19,9 @@ namespace TwitterClient.Controllers
         {
             event EventHandler publishTweetButtonClicked;
             event EventHandler disconnectClicked;
+            event EventHandler savedTweets;
 
-            ObservableCollection<ITweet> HomeTimeline { set; }
+            Tweets HomeTimeline { set; }
             string TweetToPublish { get; }
 
             Models.User User { set; }
@@ -26,8 +29,6 @@ namespace TwitterClient.Controllers
             void CleanTweetBox();
             void Show();
             void Close();
-            void ShowError(string message);
-            void ShowMessage(string message);
         }
         #endregion
 
@@ -37,9 +38,9 @@ namespace TwitterClient.Controllers
         /* Ctor */
         public override void HandleNavigation(object args)
         {
-            Window.HomeTimeline = getTimeline();
+            Window.HomeTimeline = Twitter.HomeTimeLine.getTimeline();
 
-            var LoggedUser = User.GetLoggedUser();
+            var LoggedUser = Tweetinvi.User.GetLoggedUser();
 
             Window.User = new Models.User
             {
@@ -66,7 +67,14 @@ namespace TwitterClient.Controllers
                 window = value;
                 window.publishTweetButtonClicked += Window_publishTweetButtonClicked;
                 Window.disconnectClicked += Window_disconnectClicked;
+                Window.savedTweets += Window_savedTweets;
             }
+        }
+
+        private void Window_savedTweets(object sender, EventArgs e)
+        {
+            SaveController saveController = new SaveController { Window = new SaveWindow() };
+            saveController.HandleNavigation(null);
         }
 
         private void Window_disconnectClicked(object sender, EventArgs e)
@@ -84,33 +92,21 @@ namespace TwitterClient.Controllers
             {
                 if (Window.TweetToPublish.Length > 140)
                 {
-                    window.ShowError("Votre tweet ne peut pas dépasser 140 caractères !");
+                    Views.Dialog.ErrorDialog errorDialog = new Views.Dialog.ErrorDialog("Votre tweet ne peut pas dépasser 140 caractères !");
                 }
                 else
                 {
-                    Tweet.PublishTweet(window.TweetToPublish.Trim());
-                    window.ShowMessage("Votre tweet a été publié avec succès");
+                    Tweetinvi.Tweet.PublishTweet(window.TweetToPublish.Trim());
+                    Views.Dialog.SuccessDialog successDialog = new Views.Dialog.SuccessDialog("Votre tweet a été publié avec succès");
+
                     Window.CleanTweetBox();
                 }
             }
             catch (Exception)
             {
-                window.ShowError("Votre tweet ne peut pas être nul !");
+                Views.Dialog.ErrorDialog errorDialog = new Views.Dialog.ErrorDialog("Votre tweet ne peut pas être nul !");
             }
         }
 
-        /* Methods */
-        private ObservableCollection<ITweet> getTimeline()
-        {
-            var tweets = Timeline.GetHomeTimeline();
-            ObservableCollection<ITweet> liste = new ObservableCollection<ITweet>();
-
-            foreach (var item in tweets)
-            {
-                liste.Add(item);
-            }
-
-            return liste;
-        }
     }
 }

@@ -9,6 +9,7 @@ namespace TwitterClient.Models
     public class User
     {
         public string Username { get; set; }
+        public string ScreenName { get; set; }
         public string ProfileImageUrl { get; set; }
 
         public int Tweets { get; set; }

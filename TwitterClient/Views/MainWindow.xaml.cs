@@ -26,13 +26,14 @@ namespace TwitterClient
     {
         public event EventHandler publishTweetButtonClicked;
         public event EventHandler disconnectClicked;
+        public event EventHandler savedTweets;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public ObservableCollection<ITweet> HomeTimeline
+        public Models.Tweets HomeTimeline
         {
             set { TimelineListBox.DataContext = value; }
         }
@@ -66,16 +67,6 @@ namespace TwitterClient
             }
         }
 
-        public void ShowError(string message)
-        {
-            MessageBox.Show(message,"Erreur",MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
-        public void ShowMessage(string message)
-        {
-            MessageBox.Show(message,"Succès",MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
         public void CleanTweetBox()
         {
             RichTextBoxTweet.Document.Blocks.Clear();
@@ -86,5 +77,9 @@ namespace TwitterClient
             CallHandler(disconnectClicked, EventArgs.Empty);
         }
 
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            CallHandler(savedTweets, EventArgs.Empty);
+        }
     }
 }

@@ -52,10 +52,10 @@
                             <ColumnDefinition Width="300*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Content="{Binding CreatedBy.Name}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
-                        <Label Content="{Binding CreatedBy.ScreenName}" Grid.Column="2" FontSize="12" />
-                        <Image Grid.RowSpan="2" Source="{Binding CreatedBy.ProfileImageUrl400x400}" />
-                        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding Text}"/>
+                        <Label Content="{Binding User.Username}" Grid.Column="1" FontSize="16" FontWeight="Bold" />
+                        <Label Content="{Binding User.ScreenName}" Grid.Column="2" FontSize="12" />
+                        <Image Grid.RowSpan="2" Source="{Binding User.ProfileImageUrl}" />
+                        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding Content}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -69,7 +69,8 @@
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="434"/>
+                <RowDefinition Height="375"/>
+                <RowDefinition Height="59"/>
             </Grid.RowDefinitions>
             <Image x:Name="ProfileUrlImage" Source="{Binding ProfileImageUrl}" Margin="0,10" OpacityMask="#FF5EA9DD" >
                 <Image.Clip>
@@ -98,6 +99,7 @@
             <Label x:Name="CreatedAtLabel" Content="{Binding AccountCreatedAt}" Grid.Row="4" VerticalContentAlignment="Center" Foreground="#DDFFFFFF" Margin="30,0,0,0"/>
             <Image x:Name="image" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Top" Width="25" Source="pack://siteoforigin:,,,/Resources/location.png" Margin="5,0,0,0" OpacityMask="#FF5EA9DD"/>
             <Image x:Name="image1" HorizontalAlignment="Left" Height="25" Grid.Row="4" VerticalAlignment="Top" Width="25" Source="pack://siteoforigin:,,,/Resources/calendar.png" Margin="5,0,0,0"/>
+            <Button x:Name="SaveButton" Content="Sauvegarder" Grid.Row="6" Height="Auto" Margin="10,10,10,20" Click="SaveButton_Click"/>
         </Grid>
 
     </Grid>
