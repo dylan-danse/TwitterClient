@@ -8,7 +8,7 @@ using Tweetinvi.Core.Interfaces;
 
 namespace TwitterClient.Models
 {
-    public class Tweets : ObservableCollection<Tweet>
+    public class Tweets : List<Tweet>
     {
         //Todo: Surcharge opérateur
         public static Tweets operator +(Tweets list, Tweet tweet)
@@ -18,14 +18,14 @@ namespace TwitterClient.Models
         }
 
         //Todo: Indexer
-        public Tweet this[string content]
+        public Tweets this[string content]
         {
             get
             {
-                return (from i in this where i.Content == content select i).First();
+                //return (Tweets) (from i in this where i.Content.Contains(content) select i).ToList();
+                return null;
             }
         }
 
-        public Tweet Tweet { get; set; }
     }
 }

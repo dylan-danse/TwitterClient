@@ -25,20 +25,23 @@ namespace TwitterClient.Twitter
             var homeTimeLine = Timeline.GetHomeTimeline();
             Tweets tweets = new Tweets();
 
-            Models.Tweet tweet;
-            foreach (var item in homeTimeLine)
+            if (homeTimeLine != null)
             {
-                tweet = new Models.Tweet
+                Models.Tweet tweet;
+                foreach (var item in homeTimeLine)
                 {
-                    User = new Models.User
+                    tweet = new Models.Tweet
                     {
-                        Username = item.CreatedBy.Name,
-                        ScreenName = item.CreatedBy.ScreenName,
-                        ProfileImageUrl = item.CreatedBy.ProfileImageUrl400x400
-                    },
-                    Content = item.Text
-                };
-                tweets += tweet;
+                        User = new Models.User
+                        {
+                            Username = item.CreatedBy.Name,
+                            ScreenName = item.CreatedBy.ScreenName,
+                            ProfileImageUrl = item.CreatedBy.ProfileImageUrl400x400
+                        },
+                        Content = item.Text
+                    };
+                    tweets += tweet;
+                }
             }
 
             return tweets;

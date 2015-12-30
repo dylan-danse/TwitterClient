@@ -55,7 +55,6 @@ namespace TwitterClient.Controllers
                 AccountCreatedAt = "Inscrit en " + String.Format("{0:MMMM  yyyy}", LoggedUser.CreatedAt),
             };
 
-
             Window.Show();
         }
 
