@@ -26,6 +26,26 @@ namespace TwitterClient.Views
             InitializeComponent();
         }
 
+        public IList<string> ListTypes
+        {
+            set
+            {
+                ListTypesComboBox.DataContext = value;
+            }
+        }
+
+        public string ListTypeSelected
+        {
+            get
+            {
+                if (TypesComboBox.SelectedItem != null)
+                {
+                    return ListTypesComboBox.SelectedItem.ToString();
+                }
+                return null;
+            }
+        }
+
         public IList<string> ParserNames
         {
             set
@@ -81,6 +101,12 @@ namespace TwitterClient.Views
             if (Path.Length == 0)
             {
                 Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuiller selectionner un chemin");
+                return;
+            }
+
+            if (ListTypeSelected == null)
+            {
+                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuiller selectionner un type de liste");
                 return;
             }
 

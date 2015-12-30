@@ -12,5 +12,10 @@ namespace TwitterClient.Models
         public User User { get; set; }
         public string Content { get; set; }
 
+
+        public override string ToString()
+        {
+            return String.Format("User: {0} \n Message: {1} \n\n", User.ScreenName, Content);
+        }
     }
 }

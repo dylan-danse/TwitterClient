@@ -12,6 +12,8 @@ namespace TwitterClient.Parser
 {
     public abstract class Parser
     {
+        public abstract string Extension{ get; }
+
         public abstract void Save(Tweets tweets, StreamWriter stream);
     }
 }

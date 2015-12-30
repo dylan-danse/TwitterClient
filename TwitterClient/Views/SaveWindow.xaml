@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterClient.Views"
         mc:Ignorable="d"
-        Title="SaveWindow" Height="267" Width="499">
+        Title="SaveWindow" Height="300" Width="500" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="52*"/>
-            <RowDefinition Height="52*"/>
-            <RowDefinition Height="46*"/>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="38*"/>
-            <RowDefinition Height="13*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85*"/>
@@ -21,12 +22,14 @@
             <ColumnDefinition Width="111*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="label" Content="Sauvegarder&#xD;&#xA;" RenderTransformOrigin="-0.526,0.577" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="PathLabel" Content="Chemin&#xD;&#xA;" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10"/>
-        <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" Margin="10"/>
-        <Button x:Name="PathDialogButton" Content="Chercher" Grid.Column="2" Grid.Row="1" Height="Auto" Margin="10" Click="PathDialogButton_Click"/>
-        <Button x:Name="SaveButton" Content="Sauvegarder" Grid.Column="1" Grid.Row="4" Height="Auto" Click="SaveButton_Click"/>
-        <Label x:Name="TypeLabel" Content="Type&#xA;" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,10,10,5"/>
-        <ComboBox x:Name="TypesComboBox" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" Margin="10" ItemsSource="{Binding}"/>
+        <Label x:Name="PathLabel" Content="Chemin&#xD;&#xA;" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5"/>
+        <TextBox x:Name="PathTextBox" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" Margin="5" />
+        <Button x:Name="PathDialogButton" Content="Chercher" Grid.Column="2" Grid.Row="1" Height="Auto" Margin="5" Click="PathDialogButton_Click"/>
+        <Button x:Name="SaveButton" Content="Sauvegarder" Grid.Column="1" Grid.Row="5" Height="Auto" Click="SaveButton_Click"/>
+        <Label x:Name="TypeLabel" Content="Type&#xA;" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5"/>
+        <ComboBox x:Name="TypesComboBox" Grid.Column="1" Grid.Row="3" VerticalAlignment="Stretch" ItemsSource="{Binding}" Margin="5"/>
+        <Label x:Name="ListTypeLabel" Content="Liste" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5"/>
+        <ComboBox x:Name="ListTypesComboBox" Grid.Column="1" Grid.Row="2" VerticalAlignment="Stretch" ItemsSource="{Binding}" Margin="5"/>
 
     </Grid>
 </Window>

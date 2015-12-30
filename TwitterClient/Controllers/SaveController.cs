@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Tweetinvi;
+using TwitterClient.Models;
 using TwitterClient.Parser;
 using TwitterClient.Views.Dialog;
 
@@ -18,9 +19,12 @@ namespace TwitterClient.Controllers
             event EventHandler OpenSaveDialog;
             event EventHandler OnSave;
 
-            IList<string> ParserNames { set; }
-            
             string Path { get; set; }
+
+            IList<string> ListTypes { set; }
+            string ListTypeSelected { get; }
+
+            IList<string> ParserNames { set; }
             string ParserSelect { get; }
 
             void Show();
@@ -43,13 +47,27 @@ namespace TwitterClient.Controllers
 
         private void Window_OnSave(object sender, EventArgs e)
         {
+            Tweets tweets = null;
             Parser.Parser parser;
             if (Parsers.TryGetValue(Window.ParserSelect, out parser))
             {
+                switch (Window.ListTypeSelected)
+                {
+                    case "Timeline":
+                        tweets = Twitter.HomeTimeLine.getTimeline();
+                        break;
+
+                    case "Tweet de l'utilisateur":
+                        tweets = Twitter.UserTweet.GetList();
+                        break;
+
+                    default:
+                        break;
+                }
                 try
                 {
-                    FileManager.FileManager fileManager = new FileManager.FileManager(Window.Path + "." + Window.ParserSelect.ToLower());
-                    parser.Save(Twitter.HomeTimeLine.getTimeline(), fileManager.Stream);
+                    FileManager.FileManager fileManager = new FileManager.FileManager(String.Concat(Window.Path, parser.Extension));
+                    parser.Save(tweets, fileManager.Stream);
                     fileManager.close();
 
                     Views.Dialog.SuccessDialog successDialog = new SuccessDialog("La sauvegarde a été effectuée avec succès");
@@ -83,9 +101,11 @@ namespace TwitterClient.Controllers
 
         public override void HandleNavigation(object args)
         {
+            Window.ListTypes = new List<string> { "Timeline", "Tweet de l'utilisateur" };
+
             Parsers = new Dictionary<string, Parser.Parser>();
             Parsers.Add("Xml", new XmlParser());
-
+            Parsers.Add("Texte", new TextParser());
             Window.ParserNames = Parsers.Keys.ToList();
 
             Window.Show();

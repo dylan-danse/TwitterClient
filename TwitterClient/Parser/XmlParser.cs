@@ -13,6 +13,16 @@ namespace TwitterClient.Parser
 {
     public class XmlParser : Parser
     {
+        private const string extension = ".xml";
+
+        public override string Extension
+        {
+            get
+            {
+                return extension;
+            }
+        }
+
 
         public override void Save(Tweets tweets, StreamWriter stream)
         {
