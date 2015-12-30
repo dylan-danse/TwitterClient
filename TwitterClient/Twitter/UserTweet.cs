@@ -27,7 +27,8 @@ namespace TwitterClient.Twitter
                     },
                     Content = item.Text
                 };
-                tweets.Add(tweet);
+                //Todo : Surcharge d'opérateur
+                tweets += tweet;
             }
 
             return tweets;

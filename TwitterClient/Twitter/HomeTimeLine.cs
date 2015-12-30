@@ -29,7 +29,7 @@ namespace TwitterClient.Twitter
                     },
                     Content = item.Text
                 };
-                tweets.Add(tweet);
+                tweets += tweet;
             }
 
             return tweets;

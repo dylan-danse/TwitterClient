@@ -100,19 +100,19 @@ namespace TwitterClient.Views
         {
             if (Path.Length == 0)
             {
-                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuiller selectionner un chemin");
+                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuillez sélectionner un chemin");
                 return;
             }
 
             if (ListTypeSelected == null)
             {
-                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuiller selectionner un type de liste");
+                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuillez sélectionner un type de liste");
                 return;
             }
 
             if (ParserSelect == null)
             {
-                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuiller selectionner un type");
+                Views.Dialog.ErrorDialog errorDialog = new Dialog.ErrorDialog("Veuillez sélectionner un type");
                 return;
             }
             CallHandler(OnSave, EventArgs.Empty);

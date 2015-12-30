@@ -142,6 +142,7 @@
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="Parser\TextParser.cs" />
     <Compile Include="Twitter\HomeTimeLine.cs" />
+    <Compile Include="Twitter\ListTwitter.cs" />
     <Compile Include="Twitter\UserTweet.cs" />
     <Compile Include="Views\Dialog\ErrorDialog.cs" />
     <Compile Include="Views\Dialog\SuccessDialog.cs" />
