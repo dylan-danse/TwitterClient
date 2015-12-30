@@ -7,9 +7,19 @@ using TwitterClient.Models;
 
 namespace TwitterClient.Twitter
 {
-    public static class UserTweet
+    public class UserTweet : ListTwitter
     {
-        public static Tweets GetList()
+        private const string name = "Tweet de l'utilisateur"; 
+
+        public override string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        public override Tweets GetList()
         {
             var userTweets = Tweetinvi.Timeline.GetUserTimeline(Tweetinvi.User.GetLoggedUser().Id);
             Tweets tweets = new Tweets();

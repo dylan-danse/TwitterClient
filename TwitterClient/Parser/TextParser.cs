@@ -14,6 +14,7 @@ namespace TwitterClient.Parser
     {
 
         private const string extension = ".txt";
+        private const string name = "Texte";
 
         public override string Extension
         {
@@ -22,6 +23,14 @@ namespace TwitterClient.Parser
                 return extension;
             }
         }
+        public override string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
 
         public override void Save(Tweets tweets, StreamWriter stream)
         {

@@ -14,12 +14,20 @@ namespace TwitterClient.Parser
     public class XmlParser : Parser
     {
         private const string extension = ".xml";
+        private const string name = "Xml";
 
         public override string Extension
         {
             get
             {
                 return extension;
+            }
+        }
+        public override string Name
+        {
+            get
+            {
+                return name;
             }
         }
 

@@ -9,6 +9,9 @@ namespace TwitterClient.Twitter
 {
     public abstract class ListTwitter
     {
-        public abstract Tweets getList();
+
+        public abstract string Name { get; }
+        public abstract Tweets GetList();
+
     }
 }

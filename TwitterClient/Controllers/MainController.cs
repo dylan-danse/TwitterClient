@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Tweetinvi;
 using Tweetinvi.Core.Interfaces;
 using TwitterClient.Models;
+using TwitterClient.Twitter;
 using TwitterClient.Views;
 
 namespace TwitterClient.Controllers
@@ -38,7 +39,7 @@ namespace TwitterClient.Controllers
         /* Ctor */
         public override void HandleNavigation(object args)
         {
-            Window.HomeTimeline = Twitter.HomeTimeLine.getTimeline();
+            Window.HomeTimeline = new HomeTimeLine().GetList();
 
             var LoggedUser = Tweetinvi.User.GetLoggedUser();
 

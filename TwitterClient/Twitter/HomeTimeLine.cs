@@ -8,10 +8,19 @@ using TwitterClient.Models;
 
 namespace TwitterClient.Twitter
 {
-    public static class HomeTimeLine
+    public class HomeTimeLine : ListTwitter
     {
+        private const string name = "TimeLine";
 
-        public static Tweets getTimeline()
+        public override string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        public override Tweets GetList()
         {
             var homeTimeLine = Timeline.GetHomeTimeline();
             Tweets tweets = new Tweets();
@@ -34,5 +43,6 @@ namespace TwitterClient.Twitter
 
             return tweets;
         }
+
     }
 }
