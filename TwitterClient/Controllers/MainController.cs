@@ -41,19 +41,7 @@ namespace TwitterClient.Controllers
         {
             Window.HomeTimeline = new HomeTimeLine().GetList();
 
-            var LoggedUser = Tweetinvi.User.GetLoggedUser();
-
-            Window.User = new Models.User
-            {
-                Username = LoggedUser.Name,
-                ProfileImageUrl = LoggedUser.ProfileImageUrl400x400,
-                Tweets = LoggedUser.StatusesCount,
-                Followers = LoggedUser.FollowersCount,
-                Followings = LoggedUser.FriendsCount,
-
-                City = LoggedUser.Location,
-                AccountCreatedAt = "Inscrit en " + String.Format("{0:MMMM  yyyy}", LoggedUser.CreatedAt),
-            };
+            Window.User = new Models.User(Tweetinvi.User.GetLoggedUser());
 
             Window.Show();
         }

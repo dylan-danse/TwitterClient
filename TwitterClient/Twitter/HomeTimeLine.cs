@@ -30,16 +30,7 @@ namespace TwitterClient.Twitter
                 Models.Tweet tweet;
                 foreach (var item in homeTimeLine)
                 {
-                    tweet = new Models.Tweet
-                    {
-                        User = new Models.User
-                        {
-                            Username = item.CreatedBy.Name,
-                            ScreenName = item.CreatedBy.ScreenName,
-                            ProfileImageUrl = item.CreatedBy.ProfileImageUrl400x400
-                        },
-                        Content = item.Text
-                    };
+                    tweet = new Models.Tweet(item);
                     tweets += tweet;
                 }
             }

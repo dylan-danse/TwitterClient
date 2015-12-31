@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tweetinvi.Core.Interfaces;
 
 namespace TwitterClient.Models
 {
@@ -12,6 +13,11 @@ namespace TwitterClient.Models
         public User User { get; set; }
         public string Content { get; set; }
 
+        public Tweet(ITweet tweet)
+        {
+            Content = tweet.Text;
+            User = new User(tweet.CreatedBy);
+        }
 
         public override string ToString()
         {
