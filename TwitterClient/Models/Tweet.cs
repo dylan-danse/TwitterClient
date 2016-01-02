@@ -19,6 +19,12 @@ namespace TwitterClient.Models
             User = new User(tweet.CreatedBy);
         }
 
+        public Tweet(User user, string content)
+        {
+            this.User = user;
+            this.Content = content;
+        }
+
         public override string ToString()
         {
             return String.Format("User: {0} \n Message: {1} \n\n", User.ScreenName, Content);

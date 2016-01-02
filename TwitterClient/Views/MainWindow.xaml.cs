@@ -28,6 +28,8 @@ namespace TwitterClient
         public event EventHandler disconnectClicked;
         public event EventHandler savedTweets;
 
+        private Models.Tweets tweets;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +37,15 @@ namespace TwitterClient
 
         public Models.Tweets HomeTimeline
         {
-            set { TimelineListBox.DataContext = value; }
+            get
+            {
+                return tweets;
+            }
+            set
+            {
+                tweets = value;
+                TimelineListBox.DataContext = tweets;
+            }
         }
 
         public string TweetToPublish
@@ -80,6 +90,13 @@ namespace TwitterClient
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             CallHandler(savedTweets, EventArgs.Empty);
+        }
+
+        public void AddTweet(ITweet tweet)
+        {
+            tweets.Insert(0, new Models.Tweet(tweet));
+            //TimelineListBox.Items.Refresh();
+            TimelineListBox.Dispatcher.BeginInvoke(new Action (TimelineListBox.Items.Refresh));
         }
     }
 }

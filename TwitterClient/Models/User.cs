@@ -32,5 +32,10 @@ namespace TwitterClient.Models
             City = user.Location;
             AccountCreatedAt = "Inscrit en " + String.Format("{0:MMMM  yyyy}", user.CreatedAt);
         }
+
+        public User()
+        {
+
+        }
     }
 }

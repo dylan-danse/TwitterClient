@@ -22,12 +22,13 @@ namespace TwitterClient.Controllers
             event EventHandler disconnectClicked;
             event EventHandler savedTweets;
 
-            Tweets HomeTimeline { set; }
+            Tweets HomeTimeline { get; set; }
             string TweetToPublish { get; }
 
             Models.User User { set; }
 
             void CleanTweetBox();
+            void AddTweet(ITweet tweet);
             void Show();
             void Close();
         }
@@ -44,6 +45,17 @@ namespace TwitterClient.Controllers
             Window.User = new Models.User(Tweetinvi.User.GetLoggedUser());
 
             Window.Show();
+
+            var stream = Stream.CreateUserStream();
+            stream.TweetCreatedByFriend += (sender, a) =>
+            {
+                Window.AddTweet(a.Tweet);
+            };
+            stream.TweetCreatedByMe += (sender, a) =>
+            {
+                Window.AddTweet(a.Tweet);
+            };
+            stream.StartStreamAsync();
         }
 
         /* Prop */ 
