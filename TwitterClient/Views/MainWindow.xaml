@@ -28,14 +28,9 @@
         <Image x:Name="Shutdown" Grid.Column="2" HorizontalAlignment="Left" Margin="313,5,0,5" Width="37" Source="pack://siteoforigin:,,,/Resources/shutdown.png" MouseDown="DisconnectLabel_MouseDown"/>
 
         <!-- TweetBox -->
+        <TextBox x:Name="TweetTextBox" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1" Margin="10" Background="White"/>
         <Button x:Name="ButtonTweet" Content="Tweet" Height="Auto" Click="ButtonTweet_Click" IsDefault="True" Background="#FF5EA9DD" Foreground="White" Grid.Row="1" BorderBrush="White" FontSize="32" FontFamily="Lucida Sans Unicode" Grid.Column="2" Margin="10"/>
-        <RichTextBox x:Name="RichTextBoxTweet" BorderThickness="0,0,0,4" AcceptsTab="True" Block.LineHeight="8" Grid.Row="1" Grid.Column="1" Margin="10" BorderBrush="White">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="Votre tweet ..."/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <Label x:Name="TweetLenghtLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="580,60,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="82"/>
 
         <!-- TimeLine -->
         <ListBox x:Name="TimelineListBox" ItemsSource="{Binding}" Background="White" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="5" Grid.Column="1" Margin="10">

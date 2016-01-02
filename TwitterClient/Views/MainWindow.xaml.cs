@@ -52,7 +52,11 @@ namespace TwitterClient
         {
             get
             {
-                return new TextRange(RichTextBoxTweet.Document.ContentStart, RichTextBoxTweet.Document.ContentEnd).Text;
+                return TweetTextBox.Text;
+            }
+            set
+            {
+                TweetTextBox.Text = value;
             }
         }
 
@@ -75,11 +79,6 @@ namespace TwitterClient
             {
                 handler(this, args);
             }
-        }
-
-        public void CleanTweetBox()
-        {
-            RichTextBoxTweet.Document.Blocks.Clear();
         }
 
         private void DisconnectLabel_MouseDown(object sender, MouseButtonEventArgs e)

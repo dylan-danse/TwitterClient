@@ -23,12 +23,11 @@ namespace TwitterClient.Controllers
             event EventHandler savedTweets;
 
             Tweets HomeTimeline { get; set; }
-            string TweetToPublish { get; }
+            void AddTweet(ITweet tweet);
+            string TweetToPublish { get; set; }
 
             Models.User User { set; }
 
-            void CleanTweetBox();
-            void AddTweet(ITweet tweet);
             void Show();
             void Close();
         }
@@ -99,7 +98,7 @@ namespace TwitterClient.Controllers
                     Tweetinvi.Tweet.PublishTweet(window.TweetToPublish.Trim());
                     Views.Dialog.SuccessDialog successDialog = new Views.Dialog.SuccessDialog("Votre tweet a été publié avec succès");
 
-                    Window.CleanTweetBox();
+                    Window.TweetToPublish = string.Empty;
                 }
             }
             catch (Exception)
