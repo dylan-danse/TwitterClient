@@ -40,6 +40,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50"/>
@@ -51,6 +52,15 @@
                         <Label Content="{Binding User.ScreenName}" Grid.Column="2" FontSize="12" />
                         <Image Grid.RowSpan="2" Source="{Binding User.ProfileImageUrl}" />
                         <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding Content}"/>
+
+                        <ListBox x:Name="TweetImage" ItemsSource="{Binding Pictures}" Background="White" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" Margin="10">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding}" Height="150" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

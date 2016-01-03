@@ -12,11 +12,21 @@ namespace TwitterClient.Models
     {
         public User User { get; set; }
         public string Content { get; set; }
+        public List<string> Pictures { get; set; }
 
         public Tweet(ITweet tweet)
         {
+            Pictures = new List<string>();
+
             Content = tweet.Text;
             User = new User(tweet.CreatedBy);
+            foreach (var item in tweet.Media)
+            {
+                if (item.MediaType == "photo")
+                {
+                    Pictures.Add(item.MediaURL);
+                }
+            }
         }
 
         public Tweet(User user, string content)

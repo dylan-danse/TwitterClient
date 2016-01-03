@@ -52,6 +52,11 @@ namespace TwitterClient.Controllers
                 {
                     new MainController { Window = new MainWindow() }.HandleNavigation(null);
                 }
+                else
+                {
+                    Window.ShowError("Problème de connection");
+                    Window.Show();
+                }
             }
             else
             {
