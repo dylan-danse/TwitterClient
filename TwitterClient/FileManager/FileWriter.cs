@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TwitterClient.FileManager
 {
-    public class FileManager
+    public class FileWriter : IDisposable
     {
 
         private StreamWriter stream;
@@ -18,7 +18,16 @@ namespace TwitterClient.FileManager
             set { stream = value; }
         }
 
-        public FileManager(String path)
+        public FileWriter(string path, string name)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            Stream = System.IO.File.CreateText(string.Format("{0}/{1}", path, name));
+        }
+
+        public FileWriter(string path)
         {
             Stream = System.IO.File.CreateText(path);
         }
@@ -28,5 +37,9 @@ namespace TwitterClient.FileManager
             Stream.Close();
         }
 
+        public void Dispose()
+        {
+            Stream.Close();
+        }
     }
 }

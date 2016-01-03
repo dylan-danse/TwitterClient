@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Xml.Serialization;
 using Tweetinvi;
 using Tweetinvi.Core.Credentials;
+using TwitterClient.Auth;
 
 namespace TwitterClient.Controllers
 {
@@ -20,6 +23,8 @@ namespace TwitterClient.Controllers
 
             string pin { get; }
 
+            bool RememberChecked { get; }
+
             void Show();
             void Close();
             void ShowMessage(string message);
@@ -29,13 +34,29 @@ namespace TwitterClient.Controllers
         #endregion
 
         /* Var */
-        private TwitterCredentials appCredentials = new TwitterCredentials("BYOymVcc9Yyk2mA67pLhWxS46", "YSsfV0VmFPEcQqjiZpEvZw28Ngdz4MzO6AEugef5sRzDNGkgmb");
+        private TwitterCredentials appCredentials;
         private IWindow window;
+        private RememberToken rememberToken;
 
         /* Ctor */
         public override void HandleNavigation(object args)
         {
-            Window.Show();
+            rememberToken = new RememberToken();
+            appCredentials = new TwitterCredentials("BYOymVcc9Yyk2mA67pLhWxS46", "YSsfV0VmFPEcQqjiZpEvZw28Ngdz4MzO6AEugef5sRzDNGkgmb");
+
+            if (rememberToken.IsTokenExist)
+            {
+                var token =  rememberToken.GetToken();
+                Tweetinvi.Auth.SetCredentials(new TwitterCredentials(appCredentials.ConsumerKey, appCredentials.ConsumerSecret, token.AccessToken, token.AccessTokenSecret));
+                if (Tweetinvi.User.GetLoggedUser() != null)
+                {
+                    new MainController { Window = new MainWindow() }.HandleNavigation(null);
+                }
+            }
+            else
+            {
+                Window.Show();
+            }
         }
 
         /* Prop */
@@ -49,7 +70,6 @@ namespace TwitterClient.Controllers
                 window.loginButtonClicked += Window_loginButtonClicked;
             }
         }
-        
         public TwitterCredentials AppCredentials
         {
             get { return appCredentials; }
@@ -62,9 +82,17 @@ namespace TwitterClient.Controllers
             ITwitterCredentials cred = CredentialsCreator.GetCredentialsFromVerifierCode(Window.pin, AppCredentials);
             if (cred != null)
             {
-                Auth.SetCredentials(cred);
-                MainController mainController = new MainController { Window = new MainWindow() };
-                mainController.HandleNavigation(null);
+                Tweetinvi.Auth.SetCredentials(cred);
+            }
+
+            if (Tweetinvi.User.GetLoggedUser() != null)
+            {
+                new MainController { Window = new MainWindow() }.HandleNavigation(null);
+                
+                if (Window.RememberChecked)
+                {
+                    rememberToken.SaveRememberToken(new Models.Token(Tweetinvi.User.GetLoggedUser().Name, cred.AccessToken, cred.AccessTokenSecret));
+                }
                 Window.Close();
             }
             else
@@ -74,6 +102,7 @@ namespace TwitterClient.Controllers
                 AppCredentials.AuthorizationSecret = null;
                 Window.BackToGetPin();
             }
+
         }
 
         private void Window_pinButtonClicked(object sender, EventArgs e)

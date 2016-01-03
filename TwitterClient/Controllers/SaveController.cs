@@ -96,7 +96,7 @@ namespace TwitterClient.Controllers
                     path = String.Concat(Window.Path, parser.Extension);
                 }
 
-                FileManager.FileManager fileManager = new FileManager.FileManager(path);
+                FileManager.FileWriter fileManager = new FileManager.FileWriter(path);
                 parser.Save(tweets, fileManager.Stream);
                 fileManager.close();
 

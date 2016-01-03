@@ -29,6 +29,14 @@ namespace TwitterClient
             get {  return TextBoxEncodePin.Text; }
         }
 
+        public bool RememberChecked
+        {
+            get
+            {
+                return RememberCheckBox.IsChecked.Value;
+            }
+        }
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -45,6 +53,7 @@ namespace TwitterClient
             ButtonPin.Visibility = Visibility.Hidden;
             ButtonLogin.Visibility = Visibility.Visible;
             TextBoxEncodePin.Visibility = Visibility.Visible;
+            RememberCheckBox.Visibility = Visibility.Visible;
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
@@ -65,6 +74,7 @@ namespace TwitterClient
             ButtonPin.Visibility = Visibility.Visible;
             ButtonLogin.Visibility = Visibility.Hidden;
             TextBoxEncodePin.Visibility = Visibility.Hidden;
+            RememberCheckBox.Visibility = Visibility.Hidden;
         }
 
         public void ShowError(string message)

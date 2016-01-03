@@ -5,23 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwitterClient"
         mc:Ignorable="d"
-        Title="Login" Height="179.448" Width="351.193" ResizeMode="NoResize" Background="#FFF2EEE8">
+        Title="Login" Height="241" Width="351.193" ResizeMode="NoResize" Background="#FFF2EEE8">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13*"/>
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="ButtonPin" Content="Connect with Twitter" Height="Auto" Click="ButtonPin_Click" Background="#FF5EA9DD" Foreground="#FFF2EEE8" ToolTip="Get your PinCode" Grid.Column="1" Grid.Row="2" BorderBrush="#FF5EA9DD"/>
+        <Button x:Name="ButtonPin" Content="Connect with Twitter" Height="Auto" Click="ButtonPin_Click" Background="#FF5EA9DD" Foreground="#FFF2EEE8" ToolTip="Get your PinCode" Grid.Column="1" Grid.Row="3" BorderBrush="#FF5EA9DD"/>
         <TextBox x:Name="TextBoxEncodePin" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Visibility="Hidden" FontSize="16" FontWeight="Bold" Foreground="#FF5EA9DD" Background="Transparent" BorderBrush="#FF5EA9DD" />
-        <Button x:Name="ButtonLogin" Content="Login" Height="Auto" Click="ButtonLogin_Click" Grid.Row="3" Grid.Column="1" Visibility="Hidden" Background="#FF5EA9DD" BorderBrush="#FF5EA9DD" Foreground="#FFF2EEE8"/>
-        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="0" Width="0"/>
+        <Button x:Name="ButtonLogin" Content="Login" Height="Auto" Click="ButtonLogin_Click" Grid.Row="5" Grid.Column="1" Visibility="Hidden" Background="#FF5EA9DD" BorderBrush="#FF5EA9DD" Foreground="#FFF2EEE8" RenderTransformOrigin="0.5,0.5"/>
+        <CheckBox x:Name="RememberCheckBox" Content="Se Souvenir de Moi" Grid.Column="1" Grid.Row="3" Visibility="Hidden"/>
     </Grid>
 </Window>
